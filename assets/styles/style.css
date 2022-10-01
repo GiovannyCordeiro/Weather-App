@@ -6,7 +6,7 @@
 }
 
 :root{
-  --gray:#9c9c9c;
+  --gray:#838383;
 }
 
 body{
@@ -48,4 +48,85 @@ header .wrapper-header .search{
   outline: none;
   color: black;
   font-weight: bold;
+}
+
+main{
+  height: 23rem;
+  min-width: 55rem;
+  /* background: rgb(55, 228, 255); */
+  display: flex;
+  align-items: center;
+  gap: 4rem;
+}
+
+main .icon{
+  width: 20rem;
+  height: inherit;
+  /* background:red */
+}
+
+main .icon img{
+  width: 100%;
+  height: 100%;
+}
+
+main .main-temp{
+  width: 10rem;
+  /* background: brown; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: inherit;
+}
+
+main .main-temp span{
+  font-size:9rem;
+  width: 100%;
+}
+
+main .main-temp .margin-temp{
+  color: var(--gray)
+}
+
+main .another-info{
+  height: inherit;
+  width: 15em;
+  /* background: rgb(144, 144, 144); */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+
+main .another-info .wrapper-info{
+  width: 100%;
+  height: 2.3em;
+  /* background:orange; */
+  display: flex;
+  align-items: center;
+}
+
+main .another-info .wrapper-info img{
+  width: 4rem;
+  height: 100%;
+  display: flex;
+  opacity: 40%;
+}
+
+main .another-info .wrapper-info #velocity,
+main .another-info .wrapper-info #moisture,
+main .another-info .wrapper-info #rain{
+  font-size: 2.3rem;
+  color: var(--gray)
+}
+
+main .another-info .wrapper-info #measurements,
+main .another-info .wrapper-info #percentage,
+main .another-info .wrapper-info #percentage-umidy{
+  font-size: .9rem;
+  font-weight: bold;
+  align-self: flex-end;
+  color: var(--gray)
 }
