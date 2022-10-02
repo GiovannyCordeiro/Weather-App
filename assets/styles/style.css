@@ -170,3 +170,33 @@ footer p span:hover{
   font-weight: bold;
   cursor: pointer;
 }
+
+@media screen and (min-width: 950px){
+
+  header{
+    margin-top: 15rem;
+  }
+
+  main .wrapper-main{
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2.5rem;
+  }
+
+  main .wrapper-main .anothers-info{
+    flex-direction: column;
+  }
+
+  main .wrapper-main .icon-main{
+    width: 9rem;
+  }
+
+  main .wrapper-main .anothers-info .wrapper-info{
+    border: none;
+  }
+
+  .week{
+    margin-top: 3rem;
+  }
+}
