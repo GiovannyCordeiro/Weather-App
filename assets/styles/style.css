@@ -180,8 +180,15 @@ footer p span:hover{
   main .wrapper-main{
     flex-direction: row;
     justify-content: center;
-    gap: 2rem;
+    gap: 3rem;
     margin-top: 2.5rem;
+  }
+
+  main .wrapper-main .icon-main{
+    width: 13;
+    height: 14em;
+    display: flex;
+    align-items: center;
   }
 
   main .wrapper-main .anothers-info{
@@ -189,7 +196,11 @@ footer p span:hover{
   }
 
   main .wrapper-main .icon-main{
-    width: 9rem;
+    width: 14rem;
+  }
+
+  main .wrapper-main .temp > span{
+    font-size: 8rem;
   }
 
   main .wrapper-main .anothers-info .wrapper-info{
