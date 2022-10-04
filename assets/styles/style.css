@@ -6,8 +6,8 @@
 }
 
 :root{
-  --gray:#838383;
-  --gray-light:#d7d7d7;
+  --black:#0c0c0c;
+  --gray-light:#A2A2A2;
 }
 
 body{
@@ -36,17 +36,17 @@ header .wrapper-header{
 }
 
 header .wrapper-header p{
-  color:var(--gray);
+  color:var(--black);
 }
 
 header .wrapper-header .search{
   min-width: 1em;
   padding: 0 .5em;
   border-top: 1px solid none;
-  border-bottom: 1px solid var(--gray);
+  border-bottom: 1px solid var(--gray-light);
   text-align:center;
   outline: none;
-  color: black;
+  color: var(--black);
   font-weight: bold;
 }
 
@@ -88,7 +88,7 @@ main .wrapper-main .temp > span{
 }
 
 main .wrapper-main .temp .margin-temp {
-  color: var(--gray);
+  color: var(--black);
 }
 
 main .wrapper-main .anothers-info{
@@ -148,7 +148,11 @@ main .wrapper-main .anothers-info .wrapper-info p{
 
 .week .days p{
   font-size: 1.4rem;
-  color:var(--gray);
+  color:var(--black);
+}
+
+:where(.week, .anothers-info, .margin-temp, .text-header){
+  opacity:45%;
 }
 
 footer{
@@ -160,6 +164,7 @@ footer{
   height: 2em;
   background: rgb(246, 246, 246);
   border-radius: 1em 1em 0 0;
+  color: var(--gray-light);
 }
 
 footer p{
@@ -169,6 +174,7 @@ footer p{
 footer p span:hover{
   font-weight: bold;
   cursor: pointer;
+  color:var(--black)
 }
 
 @media screen and (min-width: 950px){
