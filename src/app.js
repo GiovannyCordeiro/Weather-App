@@ -1,17 +1,38 @@
-const url = "http://api.openweathermap.org/geo/1.0/direct?q=London&limit=5&appid={afce42271afc999070f2c2ae65d6a47b}"
+import { request } from "./app/request.js";
+import { urlAPIGeo } from "./app/APIs.js";
 
-function requestForAPI(){
-  return new Promise((resolve, reject) => {
-    const xml = new XMLHttpRequest();
-    xml.open("GET",url);
-    xml.responseType = "json";
-    xml.onload = () => {
-      resolve(xml.response)
-    }
-    xml.send();
-  })
-}
+//test variables
+const countryName = "Brazil";
+const cityName = "Joao Pessoa";
+const stateName = "Paraiba";
 
-requestForAPI().then((data) => {
-  console.log(data)
-})
+//DOM
+const search = document.querySelector(".search");
+
+search.addEventListener("keyup", (e) => {
+  if(e.keyCode === 13){
+    const indexFirstDiv = search.innerHTML.indexOf("<div>");
+    const valueSearch = search.innerHTML.slice(0, indexFirstDiv);
+    search.textContent = valueSearch; 
+
+    const [city, state, country] = splitInputUser(search.textContent);
+    const urlGeo = urlAPIGeo(city, state, country);
+
+    async function receivePosition(){
+      const positionLocal = await request("GET", urlGeo);
+      console.log(positionLocal);
+      //--
+    };
+    
+    receivePosition();  
+  };
+});
+
+function splitInputUser(data){
+  if(data === ''){
+    alert("Put the consistent value");
+    return;
+  }
+  const region = data.split(",");
+  return region;
+};
