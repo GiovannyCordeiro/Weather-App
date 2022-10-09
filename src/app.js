@@ -1,5 +1,5 @@
 import { request } from "./app/request.js";
-import { urlAPIGeo } from "./app/APIs.js";
+import { urlAPIGeo, urlAPIWeather} from "./app/APIs.js";
 
 //test variables
 const countryName = "Brazil";
@@ -18,13 +18,22 @@ search.addEventListener("keyup", (e) => {
     const [city, state, country] = splitInputUser(search.textContent);
     const urlGeo = urlAPIGeo(city, state, country);
 
-    async function receivePosition(){
-      const positionLocal = await request("GET", urlGeo);
-      console.log(positionLocal);
-      //--
+    async function APIAssignments(){
+      const [positionLocal] = await request("GET", urlGeo);
+      if(positionLocal === undefined){
+        alert("Digite um valor coerente de local")
+        search.textContent = ""
+      }
+
+      const {lat, lon} = positionLocal;
+      console.log(lat,lon)
+
+      const urlWeather = urlAPIWeather(lat, lon);
+      const response = await request("GET", urlWeather);
+//       console.log(infoWeather) 
     };
     
-    receivePosition();  
+    APIAssignments();  
   };
 });
 
