@@ -1,10 +1,6 @@
 import { request } from "./app/request.js";
 import { urlAPIGeo, urlAPIWeather} from "./app/APIs.js";
-
-//test variables
-const countryName = "Brazil";
-const cityName = "Joao Pessoa";
-const stateName = "Paraiba";
+import { getNumWeek } from "./app/numberWeek.js"; 
 
 //DOM
 const search = document.querySelector(".search");
@@ -26,11 +22,14 @@ search.addEventListener("keyup", (e) => {
       }
 
       const {lat, lon} = positionLocal;
-      console.log(lat,lon)
 
       const urlWeather = urlAPIWeather(lat, lon);
-      const response = await request("GET", urlWeather);
-//       console.log(infoWeather) 
+      const {list} = await request("GET", urlWeather);
+      const {main} = list[0];
+      //__
+
+      const numberDate = getNumWeek(list);
+      console.log(numberDate)
     };
     
     APIAssignments();  
