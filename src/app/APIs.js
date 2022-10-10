@@ -1,5 +1,5 @@
-const key = "caaf11d7ca47b7d66e3f097135c0d685";
-const key2 = "e7478924132db1e97c770c95d177a501";
+const key = "";
+const key2 = "";
 
 export function urlAPIGeo(city, state, country){
   const url =  `http://api.openweathermap.org/geo/1.0/direct?q=${city},${state},${country}&appid=${key}`;

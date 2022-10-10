@@ -5,6 +5,14 @@ import { getNumWeek } from "./app/numberWeek.js";
 //DOM
 const search = document.querySelector(".search");
 
+const tempDOM = document.querySelector(".temp").firstElementChild;
+const minTemp = document.querySelector(".margin-temp").firstElementChild;
+const maxTemp = document.querySelector(".margin-temp").lastElementChild;
+
+const velocity = document.getElementById("velocity");
+const rain = document.getElementById("rain");
+const humidity = document.getElementById("moisture");
+
 search.addEventListener("keyup", (e) => {
   if(e.keyCode === 13){
     const indexFirstDiv = search.innerHTML.indexOf("<div>");
@@ -25,11 +33,22 @@ search.addEventListener("keyup", (e) => {
 
       const urlWeather = urlAPIWeather(lat, lon);
       const {list} = await request("GET", urlWeather);
-      const {main} = list[0];
-      //__
 
+      const {main} = list[0];
+      const {wind} = list[0];
+
+      console.log(list)
+
+      tempDOM.textContent = Math.trunc(main.temp);
+      minTemp.textContent = Math.trunc(main.temp_min) + "º";
+      maxTemp.textContent = Math.trunc(main.temp_max) + "º";
+
+      rain.textContent = Math.trunc(wind.gust);
+      velocity.textContent = wind.speed;
+      humidity.textContent = main.humidity;
+
+      //___
       const numberDate = getNumWeek(list);
-      console.log(numberDate)
     };
     
     APIAssignments();  
