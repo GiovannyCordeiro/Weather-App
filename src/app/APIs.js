@@ -1,4 +1,4 @@
-const key = ""; 
+const key = "";
 const key2 = "";
 
 export function urlAPIGeo(city, state, country){
@@ -7,6 +7,6 @@ export function urlAPIGeo(city, state, country){
 }
 
 export function urlAPIWeather(lat, lon){
-  const url = `api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key2}`;
+  const url = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=${key2}&units=metric`;
   return url;
 }

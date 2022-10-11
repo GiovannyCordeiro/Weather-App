@@ -1,13 +1,18 @@
 import { request } from "./app/request.js";
-import { urlAPIGeo, urlAPIWeather} from "./app/APIs.js";
+import { urlAPIGeo, urlAPIWeather } from "./app/APIs.js";
+import { getDayWeek } from "./app/getDayWeek.js"; 
+import { handlerDayDOM } from "./app/DOM/handlerDayDOM.js";
 
-//test variables
-const countryName = "Brazil";
-const cityName = "Joao Pessoa";
-const stateName = "Paraiba";
-
-//DOM
 const search = document.querySelector(".search");
+
+//Other days
+const dayOne = document.getElementById("dayOne");
+const dayTwo = document.getElementById("dayTwo");
+const dayThree = document.getElementById("dayThree");
+const dayFour = document.getElementById("dayFour");
+
+const othersDays = [dayOne, dayTwo, dayThree, dayFour]
+
 
 search.addEventListener("keyup", (e) => {
   if(e.keyCode === 13){
@@ -26,11 +31,61 @@ search.addEventListener("keyup", (e) => {
       }
 
       const {lat, lon} = positionLocal;
-      console.log(lat,lon)
 
       const urlWeather = urlAPIWeather(lat, lon);
-      const response = await request("GET", urlWeather);
-//       console.log(infoWeather) 
+      const {list} = await request("GET", urlWeather);
+
+      const {main} = list[0];
+      const {wind} = list[0];
+
+      handlerDayDOM(main, wind);
+
+      for( let i = 1; i <= othersDays.length; i++){
+        let number = i * 8;
+        
+        switch(number){
+          case 8:
+            const nameDayWeek = dayOne.lastElementChild;
+            const nameWeek = getDayWeek(list[number]);
+            nameDayWeek.textContent = nameWeek.toUpperCase();
+
+            const minDay = document.getElementById("min-temp-DayOne");
+            const maxDay = document.getElementById("max-temp-DayOne");
+            minDay.textContent = Math.trunc(list[number].main.temp_min);
+            maxDay.textContent = Math.trunc(list[number].main.temp_max);
+
+          case 16:
+            const nameDayWeekTwo = dayTwo.lastElementChild;
+            const nameWeekTwo = getDayWeek(list[number]);
+            nameDayWeekTwo.textContent = nameWeekTwo.toUpperCase();
+
+            const minDayTwo = document.getElementById("min-temp-DayTwo");
+            const maxDayTwo = document.getElementById("max-temp-DayTwo");
+            minDayTwo.textContent = Math.trunc(list[number].main.temp_min);
+            maxDayTwo.textContent = Math.trunc(list[number].main.temp_max);
+
+          case 24:
+            const nameDayWeekThree = dayThree.lastElementChild;
+            const nameWeekThree = getDayWeek(list[number]);
+            nameDayWeekThree.textContent = nameWeekThree.toUpperCase();
+
+            const minDayThree = document.getElementById("min-temp-DayThree");
+            const maxDayThree = document.getElementById("max-temp-DayThree");
+            minDayThree.textContent = Math.trunc(list[number].main.temp_min);
+            maxDayThree.textContent = Math.trunc(list[number].main.temp_max);
+
+          case 32:
+            const nameDayWeekFour = dayFour.lastElementChild;
+            const nameWeekFour = getDayWeek(list[number]);
+            nameDayWeekFour.textContent = nameWeekFour.toUpperCase();
+
+            const minDayFour = document.getElementById("min-temp-DayFour");
+            const maxDayFour = document.getElementById("max-temp-DayFour");
+            minDayFour.textContent = Math.trunc(list[number].main.temp_min);
+            maxDayFour.textContent = Math.trunc(list[number].main.temp_max);
+
+        }
+      }
     };
     
     APIAssignments();  
