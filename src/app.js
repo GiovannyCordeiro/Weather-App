@@ -5,6 +5,8 @@ import { handlerDayDOM } from "./app/DOM/handlerDayDOM.js";
 
 const search = document.querySelector(".search");
 
+const imageMain = document.getElementById("image-main");
+
 //Other days
 const dayOne = document.getElementById("dayOne");
 const dayTwo = document.getElementById("dayTwo");
@@ -35,10 +37,9 @@ search.addEventListener("keyup", (e) => {
       const urlWeather = urlAPIWeather(lat, lon);
       const {list} = await request("GET", urlWeather);
 
-      const {main} = list[0];
-      const {wind} = list[0];
+      const {main, wind, weather} = list[0];
 
-      handlerDayDOM(main, wind);
+      handlerDayDOM(main, wind, weather);
 
       for( let i = 1; i <= othersDays.length; i++){
         let number = i * 8;
@@ -51,8 +52,8 @@ search.addEventListener("keyup", (e) => {
 
             const minDay = document.getElementById("min-temp-DayOne");
             const maxDay = document.getElementById("max-temp-DayOne");
-            minDay.textContent = Math.trunc(list[number].main.temp_min);
-            maxDay.textContent = Math.trunc(list[number].main.temp_max);
+            minDay.textContent = Math.floor(list[number].main.temp_min) + "º";
+            maxDay.textContent = Math.ceil(list[number].main.temp_max) + "º";
 
           case 16:
             const nameDayWeekTwo = dayTwo.lastElementChild;
@@ -61,18 +62,18 @@ search.addEventListener("keyup", (e) => {
 
             const minDayTwo = document.getElementById("min-temp-DayTwo");
             const maxDayTwo = document.getElementById("max-temp-DayTwo");
-            minDayTwo.textContent = Math.trunc(list[number].main.temp_min);
-            maxDayTwo.textContent = Math.trunc(list[number].main.temp_max);
+            minDayTwo.textContent = Math.floor(list[number].main.temp_min) + "º";
+            maxDayTwo.textContent = Math.ceil(list[number].main.temp_max) + "º";
 
           case 24:
-            const nameDayWeekThree = dayThree.lastElementChild;
+            const nameDayWeekThree = dayThree.lastElementChild;1
             const nameWeekThree = getDayWeek(list[number]);
             nameDayWeekThree.textContent = nameWeekThree.toUpperCase();
 
             const minDayThree = document.getElementById("min-temp-DayThree");
             const maxDayThree = document.getElementById("max-temp-DayThree");
-            minDayThree.textContent = Math.trunc(list[number].main.temp_min);
-            maxDayThree.textContent = Math.trunc(list[number].main.temp_max);
+            minDayThree.textContent = Math.floor(list[number].main.temp_min) + "º";
+            maxDayThree.textContent = Math.ceil(list[number].main.temp_max) + "º";
 
           case 32:
             const nameDayWeekFour = dayFour.lastElementChild;
@@ -81,8 +82,8 @@ search.addEventListener("keyup", (e) => {
 
             const minDayFour = document.getElementById("min-temp-DayFour");
             const maxDayFour = document.getElementById("max-temp-DayFour");
-            minDayFour.textContent = Math.trunc(list[number].main.temp_min);
-            maxDayFour.textContent = Math.trunc(list[number].main.temp_max);
+            minDayFour.textContent = Math.floor(list[number].main.temp_min) + "º";
+            maxDayFour.textContent = Math.ceil(list[number].main.temp_max) + "º";
 
         }
       }
