@@ -1,6 +1,7 @@
 import { request } from "./app/request.js";
 import { urlAPIGeo, urlAPIWeather } from "./app/APIs.js";
 import { getDayWeek } from "./app/getDayWeek.js"; 
+import { splitInputUser } from "./app/DOM/splitInputUser.js";
 
 import { handlerDayDOM } from "./app/DOM/handlerDayDOM.js";
 import { updDayOneDOM } from "./app/DOM/updDayOneDOM.js";
@@ -61,16 +62,7 @@ search.addEventListener("keyup", (e) => {
         }
       }
     };
-    
+
     APIAssignments();  
   };
 });
-
-function splitInputUser(data){
-  if(data === ''){
-    alert("Put the consistent value");
-    return;
-  }
-  const region = data.split(",");
-  return region;
-};
