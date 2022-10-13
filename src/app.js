@@ -1,7 +1,12 @@
 import { request } from "./app/request.js";
 import { urlAPIGeo, urlAPIWeather } from "./app/APIs.js";
 import { getDayWeek } from "./app/getDayWeek.js"; 
+
 import { handlerDayDOM } from "./app/DOM/handlerDayDOM.js";
+import { updDayOneDOM } from "./app/DOM/updDayOneDOM.js";
+import { updDayTwoDOM } from "./app/DOM/updDayTwoDOM.js";
+import { updDayThreeDOM } from "./app/DOM/updDayThreeDOM.js";
+import { updDayFourDOM } from "./app/DOM/updDayFourDOM.js";
 
 const search = document.querySelector(".search");
 
@@ -40,52 +45,19 @@ search.addEventListener("keyup", (e) => {
 
       for( let i = 1; i <= othersDays.length; i++){
         let number = i * 8;
-        
         switch(number){
           case 8:
             const nameWeek = getDayWeek(list[number]);
-            const minDay = document.getElementById("min-temp-DayOne");
-            const maxDay = document.getElementById("max-temp-DayOne");
-          
-            const nameDayWeek = dayOne.lastElementChild;
-            nameDayWeek.textContent = nameWeek.toUpperCase();
-          
-            minDay.textContent = Math.floor(list[number].main.temp_min) + "º";
-            maxDay.textContent = Math.ceil(list[number].main.temp_max) + "º";
-
+            updDayOneDOM(list[number], nameWeek, dayOne);
           case 16:
             const nameWeekTwo = getDayWeek(list[number]);
-            const minDayTwo = document.getElementById("min-temp-DayTwo");
-            const maxDayTwo = document.getElementById("max-temp-DayTwo");
-
-            const nameDayWeekTwo = dayTwo.lastElementChild;
-            nameDayWeekTwo.textContent = nameWeekTwo.toUpperCase();
-
-            minDayTwo.textContent = Math.floor(list[number].main.temp_min) + "º";
-            maxDayTwo.textContent = Math.ceil(list[number].main.temp_max) + "º";
-
+            updDayTwoDOM(list[number],nameWeekTwo, dayTwo);
           case 24:
             const nameWeekThree = getDayWeek(list[number]);
-            const minDayThree = document.getElementById("min-temp-DayThree");
-            const maxDayThree = document.getElementById("max-temp-DayThree");
-
-            const nameDayWeekThree = dayThree.lastElementChild;1
-            nameDayWeekThree.textContent = nameWeekThree.toUpperCase();
-
-            minDayThree.textContent = Math.floor(list[number].main.temp_min) + "º";
-            maxDayThree.textContent = Math.ceil(list[number].main.temp_max) + "º";
-
+            updDayThreeDOM(list[number], nameWeekThree, dayThree);
           case 32:
             const nameWeekFour = getDayWeek(list[number]);
-            const minDayFour = document.getElementById("min-temp-DayFour");
-            const maxDayFour = document.getElementById("max-temp-DayFour");
-
-            const nameDayWeekFour = dayFour.lastElementChild;
-            nameDayWeekFour.textContent = nameWeekFour.toUpperCase();
-
-            minDayFour.textContent = Math.floor(list[number].main.temp_min) + "º";
-            maxDayFour.textContent = Math.ceil(list[number].main.temp_max) + "º";
-
+            updDayFourDOM(list[number], nameWeekFour, dayFour);
         }
       }
     };

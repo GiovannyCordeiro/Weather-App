@@ -75,6 +75,7 @@ main .wrapper-main .icon-main{
 main .wrapper-main .icon-main img{
   width: 100%;
   height: 100%;
+  opacity: 30%;
 }
 
 main .wrapper-main .temp{
