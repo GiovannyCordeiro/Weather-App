@@ -44,7 +44,6 @@ search.addEventListener("keyup", (e) => {
 
       const urlWeather = urlAPIWeather(lat, lon);
       const {list} = await request("GET", urlWeather);
-      // console.log(list);
 
       const {main, wind, weather} = list[0];
 
@@ -74,6 +73,13 @@ search.addEventListener("keyup", (e) => {
 });
 
 bntFahr.addEventListener("click", () => {
+
+  btnCel.style.color = "var(--gray-light)";
+  btnCel.style.fontWeight = "normal";
+
+  bntFahr.style.fontWeight = "bolder";
+  bntFahr.style.color =  "var(--black)"
+
   const {lat, lon} = pstLocal;
   async function rqstAPI(){
     const urlFarh = urlAPIWeatherFahr(lat, lon);
@@ -104,6 +110,12 @@ bntFahr.addEventListener("click", () => {
 });
 
 btnCel.addEventListener("click", () => {
+  bntFahr.style.color = "var(--gray-light)";
+  bntFahr.style.fontWeight = "normal";
+
+  btnCel.style.fontWeight = "bolder";
+  btnCel.style.color =  "var(--black)";
+
   const {lat, lon} = pstLocal;
   async function rqstAPI(){
     const urlFarh = urlAPIWeather(lat, lon);
