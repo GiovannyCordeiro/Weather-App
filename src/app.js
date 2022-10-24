@@ -1,5 +1,5 @@
 import { request } from "./app/request.js";
-import { urlAPIGeo, urlAPIWeather, urlAPIWeatherFahr } from "./app/APIs.js";
+import { urlAPIGeo, urlAPIWeather, urlAPIWeatherFahr } from "./app/getUrlAPI.js";
 import { getDayWeek } from "./app/getDayWeek.js"; 
 import { splitInputUser } from "./app/DOM/splitInputUser.js";
 
