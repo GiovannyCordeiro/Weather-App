@@ -17,4 +17,4 @@ Quase completo
 O design da aplicação foi desenvolvido pelo Matthew Kosloski a alguns 
 anos atraz, é minimalista e bem direto, adorei desenvolver.
 
-Caso queira saber mais sobre o design [clica aqui]("https://dribbble.com/shots/2138482-Weather-App").
+Caso queira saber mais sobre o design [clica aqui](https://dribbble.com/shots/2138482-Weather-App).
